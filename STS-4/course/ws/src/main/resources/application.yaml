@@ -1,0 +1,82 @@
+spring:
+  jpa:
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 100
+  profiles:
+    active:
+    - dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+hoaxify:
+  upload-path: storage-production
+---
+spring:
+  datasource:
+    url: jdbc:h2:./devdb
+  jpa:
+    hibernate:
+      ddl-auto: update
+  config:
+    activate:
+      on-profile: dev
+hoaxify:
+  upload-path: storage-dev
+  
+  
+  
+#spring:
+#   jpa:
+#     properties:
+#        javax:
+#           persistence:
+#              validation:
+#                 mode: none
+#   data:
+#     web:
+#       pageable:
+#         default-page-size: 10
+#         max-page-size: 100
+#   profiles:
+#     active:
+#     - dev   
+#   servlet:
+#    multipart:
+#      max-file-size: 10MB
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: production
+#hoaxify:
+#  upload-path: storage-production
+#---
+#spring:
+#  config:
+#    activate:
+#     on-profile: dev
+#     datasource:
+#       url: jdbc:h2:./devdb 
+#     jpa:
+#       hibernate:
+#         ddl-auto: update
+#hoaxify:
+#    upload-path: storage-dev
+      
+#logging:
+#  level:
+#    org.springframework: DEBUG
+
